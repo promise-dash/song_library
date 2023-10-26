@@ -1,0 +1,8 @@
+<div class="p-3" style="width: 40vw;">
+    <h2>Are you sure, you want to delete the following songs</h2>
+    <ul *ngFor="let id of songService.itemsToBeDeleted">
+        <li>{{findTitle(id)}}</li>
+    </ul>
+    <button class="btn btn-danger" (click)="onConfirm()">Confirm</button>
+</div>
+
