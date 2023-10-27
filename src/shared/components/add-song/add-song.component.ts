@@ -9,12 +9,30 @@ import { SongService } from 'src/shared/services/song.service';
   templateUrl: './add-song.component.html',
   styleUrls: ['./add-song.component.css']
 })
+
+/**
+
+Component for adding a new song to the library
+@class */
 export class AddSongComponent {
 
-  addForm: FormGroup;
-  
-  newSong: Song;
+/**
 
+The form group for adding a new song
+@type {FormGroup} */ addForm: FormGroup;
+  
+/**
+
+The new song object to be added
+@type {Song} */newSong: Song;
+
+/**
+
+Constructs the AddSongComponent
+@constructor
+@param {FormBuilder} fb The form builder service
+@param {SongService} songService The song service
+@param {MatDialogRef} dialogRef The dialog reference */
   constructor(private fb: FormBuilder, private songService: SongService, private dialogRef: MatDialogRef<AddSongComponent>){
     this.addForm = this.fb.group({ 
       songName: '',
@@ -28,7 +46,10 @@ export class AddSongComponent {
       this.newSong = value;
     });
   }
-  
+
+/**
+
+Handles form submission and adds the new song to the library if it is valid. */
   onSubmit(){
 
     if(this.newSong){

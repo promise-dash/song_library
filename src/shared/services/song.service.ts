@@ -8009,12 +8009,29 @@ export class SongService {
     }
   ];
 
+/**
+
+Service class for managing the song library
+@class / export class SongService { /*
+The array of song objects in the library
+@type {Array} */
   songData = [...this.songList];
 
-  sortAttribute = 'null';
+/**
 
-  itemsToBeDeleted: Array<string> = [];
+The initial array of song objects in the library, used for searching
+@type {Array} */ sortAttribute = 'null';
 
+/**
+
+The attribute to be used for sorting
+@type {string} */ itemsToBeDeleted: Array<string> = [];
+
+
+/**
+
+Adds a new song to the library if it doesn't already exist
+@param {Song} newSong The song to be added */
   addNewSong(newSong: Song): void{
     const songExists = this.songList.find(song => song.songName === newSong.songName && song.artistName === newSong.artistName);
     if (songExists) {
@@ -8025,14 +8042,26 @@ export class SongService {
     }
   }
 
+/**
+
+Searches for songs in the library by song name and/or artist name
+@param {string} songName The name of the song to search for (case-insensitive)
+@param {string} artistName The name of the artist to search for (case-insensitive) */
   search(songName: string, artistName: string): void{
     console.log(this.itemsToBeDeleted);
     this.songList = this.songData.filter((song) => {
-      return song.songName.toLowerCase().startsWith(songName) && song.artistName.toLowerCase().startsWith(artistName);
+      return song.songName.toLowerCase().includes(songName) && song.artistName.toLowerCase().includes(artistName);
     });
   }
   
 
+/**
+
+Sorts the songs in the library based on the given attribute, in ascending or
+
+descending order depending on the current state.
+
+@param {string} attribute The attribute to sort by */ 
   sort(attribute: string): void {
     if (this.sortAttribute != attribute) {
 
@@ -8066,11 +8095,10 @@ export class SongService {
     }
   }
 
-  storeItemsToBeDeleted(arr: Array<string>): void{
-    this.itemsToBeDeleted = arr;
-    console.log(this.itemsToBeDeleted);
-  }
-  
+
+/**
+Deletes the songs in the library corresponding to the item IDs in itemsToBeDeleted array. */
+
   deleteSongs(): void{
     console.log('deleting items');
     this.itemsToBeDeleted.forEach((id) => {

@@ -4,20 +4,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MaterialModule } from 'src/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AddSongComponent } from '../shared/components/add-song/add-song.component';
-import { DeleteSongComponent } from '../shared/components/delete-song/delete-song.component';
+import { SharedModule } from 'src/shared/shared.module';
 
 
 @NgModule({
   declarations: [ 
-    AppComponent, AddSongComponent, DeleteSongComponent
+    AppComponent, 
   ],
   imports: [
     MaterialModule,
     BrowserModule,
     ReactiveFormsModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
